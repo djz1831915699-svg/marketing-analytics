@@ -99,6 +99,27 @@
     .pelican-link{display:inline-flex;align-items:center;gap:8px;flex-shrink:0;border:1px solid #b8d8c8;border-radius:50px;padding:15px 21px;font-size:13px;font-weight:750;color:#1e6855;white-space:nowrap;transition:background .18s,transform .18s}
     .pelican-link:hover{background:#e8f4ed;transform:translateY(-2px)}
     @media(max-width:650px){.pelican-banner{padding:23px;display:block}.pelican-link{margin-top:20px}}
+
+    /* Snake Lab: additional arcade showcase; original site layout is unchanged. */
+    .arcade-banner{margin-top:18px;padding:29px 34px;background:#102b31;border-radius:21px;display:flex;gap:26px;align-items:center;justify-content:space-between;position:relative;overflow:hidden;border:1px solid #254d50}
+    .arcade-banner:before{content:"";position:absolute;width:290px;height:290px;right:8%;top:-150px;border-radius:50%;background:radial-gradient(circle,#78cda930,transparent 72%);pointer-events:none}
+    .arcade-copy{position:relative;z-index:1}
+    .arcade-eyebrow{font-size:10px;color:#a8d8bd;letter-spacing:.14em;font-weight:780}
+    .arcade-banner h3{color:#f2faf5;font-size:28px;letter-spacing:-.055em;margin:9px 0}
+    .arcade-banner p{font-size:13px;color:#b1cbc4;line-height:1.65;max-width:650px;margin:0}
+    .arcade-link{position:relative;z-index:1;flex-shrink:0;padding:15px 22px;background:#c4f28f;color:#173d31;font-size:13px;font-weight:800;border-radius:99px;transition:transform .15s}
+    .arcade-link:hover{transform:translateY(-2px)}
+    .arcade-emoji{font-size:24px;margin-right:4px}
+    @media(max-width:650px){.arcade-banner{display:block;padding:24px}.arcade-link{display:inline-block;margin-top:19px}}
+
+    /* Curated external resource: official Three.js examples */
+    .threejs-banner{margin-top:18px;padding:29px 34px;background:linear-gradient(110deg,#f0f5fd,#f8faf7);border:1px solid #dfe8eb;border-radius:21px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .threejs-banner .threejs-eyebrow{font-size:10px;color:#516fa0;letter-spacing:.14em;font-weight:800}
+    .threejs-banner h3{font-size:26px;letter-spacing:-.055em;margin:10px 0 8px;color:#183c4b}
+    .threejs-banner p{font-size:13px;color:#657b85;line-height:1.7;max-width:650px;margin:0}
+    .threejs-link{display:inline-flex;align-items:center;gap:10px;flex-shrink:0;padding:15px 21px;border-radius:99px;background:#193b4d;color:#fff;font-size:13px;font-weight:750;white-space:nowrap;transition:background .18s,transform .18s}
+    .threejs-link:hover{background:#315d77;transform:translateY(-2px)}
+    @media(max-width:650px){.threejs-banner{display:block;padding:23px}.threejs-link{margin-top:19px}}
   </style>
 </head>
 <body>
@@ -214,6 +235,21 @@
             <p>Explore a playful SVG and web-animation experiment, alongside the marketing analytics projects.</p>
           </div>
           <a class="pelican-link" href="./pelican_test.html">View pelican animation <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="arcade-banner" aria-label="Snake Lab browser game">
+          <div class="arcade-copy"><span class="arcade-eyebrow">NEW · INTERACTIVE ARCADE</span>
+            <h3><span class="arcade-emoji" aria-hidden="true">🐍</span> Snake Lab.</h3>
+            <p>Take a break from the data. Play a polished browser Snake game with keyboard or mobile controls, adjustable speed, and a local high score.</p>
+          </div>
+          <a class="arcade-link" href="./snake_game.html">Play the game ↗</a>
+        </article>
+        <article class="threejs-banner" aria-label="Three.js official interactive 3D examples — external website">
+          <div>
+            <span class="threejs-eyebrow">EXPLORE · OFFICIAL 3D DEMOS</span>
+            <h3>Discover the 3D web. <span aria-hidden="true">🌐</span></h3>
+            <p>Play with interactive planets, animated particles, and browser-based 3D experiments in the official Three.js examples gallery. External inspiration, not a project hosted here.</p>
+          </div>
+          <a class="threejs-link" href="https://threejs.org/examples/" target="_blank" rel="noopener noreferrer" aria-label="Explore official Three.js 3D examples in a new tab">Explore Three.js demos <span aria-hidden="true">↗</span></a>
         </article>
       </section>
       <section id="about" class="about" aria-labelledby="about-heading">
