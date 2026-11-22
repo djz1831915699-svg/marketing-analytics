@@ -91,6 +91,14 @@
     .talk-link{background:#1c6454;color:#fff;flex-shrink:0;border-radius:50px;padding:15px 21px;font-size:13px;font-weight:750;white-space:nowrap}
     .talk-link:hover{background:#174c40}
     @media(max-width:650px){.talk-banner{padding:23px;display:block}.talk-link{display:inline-block;margin-top:20px}}
+
+    /* Bonus project: pelican animation */
+    .pelican-banner{margin-top:18px;padding:30px 34px;background:var(--surface);border:1px solid var(--line);border-radius:21px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .pelican-banner h3{font-size:26px;letter-spacing:-.055em;margin:10px 0 8px}
+    .pelican-banner p{font-size:13px;color:var(--secondary);line-height:1.7;max-width:650px;margin:0}
+    .pelican-link{display:inline-flex;align-items:center;gap:8px;flex-shrink:0;border:1px solid #b8d8c8;border-radius:50px;padding:15px 21px;font-size:13px;font-weight:750;color:#1e6855;white-space:nowrap;transition:background .18s,transform .18s}
+    .pelican-link:hover{background:#e8f4ed;transform:translateY(-2px)}
+    @media(max-width:650px){.pelican-banner{padding:23px;display:block}.pelican-link{margin-top:20px}}
   </style>
 </head>
 <body>
@@ -198,6 +206,14 @@
             <p>A short, classroom-style interactive talk: Euclidean distance, centroids, convergence, cluster profiles and R code.</p>
           </div>
           <a class="talk-link" href="./kmeans_presentation.html">Open slide deck <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="pelican-banner" aria-label="Pelican bicycle animation experiment">
+          <div>
+            <span class="talk-eyebrow">BONUS · OPEN-SOURCE EXPLORATION</span>
+            <h3>Pelican Bicycle Test <span aria-hidden="true">🐦</span></h3>
+            <p>Explore a playful SVG and web-animation experiment, alongside the marketing analytics projects.</p>
+          </div>
+          <a class="pelican-link" href="./pelican_test.html">View pelican animation <span aria-hidden="true">↗</span></a>
         </article>
       </section>
       <section id="about" class="about" aria-labelledby="about-heading">
