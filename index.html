@@ -83,6 +83,14 @@
     @media(max-width:950px){.featured{grid-template-columns:1fr}.feature-copy{min-height:365px}.feature-visual{padding:40px}.chart-panel{max-width:500px}.projects{grid-template-columns:1fr 1fr}.projects .project-card:last-child{grid-column:1 / -1}.mini-viz{height:165px}}
     @media(max-width:650px){.container{width:calc(100% - 38px)}.topbar{height:76px}.topnav{gap:17px}.topnav a:first-child{display:none}.topnav .nav-cta{gap:4px}.brand{font-size:17px;gap:9px}.brand-mark{width:34px;height:34px;font-size:14px}.hero{padding-top:32px;padding-bottom:47px}h1{font-size:clamp(48px,12vw,71px);letter-spacing:-.073em}.hero-bottom{display:block}.hero-intro{font-size:15px;line-height:1.75}.hero-action{margin-top:23px}.section-top{margin:45px 0 20px}.section-note{display:none}h2{font-size:29px}.featured{border-radius:18px}.feature-copy{padding:31px 27px;min-height:355px}.feature-title{font-size:43px}.feature-description{font-size:14px}.feature-visual{padding:25px}.chart-panel{padding:18px}.projects{grid-template-columns:1fr}.projects .project-card:last-child{grid-column:auto}.project-card{min-height:315px}.about{grid-template-columns:1fr;gap:17px;margin-top:54px;padding:48px 0 54px}.about h2{font-size:34px}.footer-inner{align-items:start;flex-direction:column}.footer-links{gap:20px}}
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+    .talk-banner{margin-top:22px;padding:30px 34px;background:#e8f4ed;border:1px solid #d1e6d8;border-radius:21px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .talk-eyebrow{color:#2e8065;letter-spacing:.14em;font-size:10px;font-weight:800}
+    .talk-banner h3{font-size:26px;letter-spacing:-.055em;margin:10px 0 8px}
+    .talk-banner p{font-size:13px;color:#5d7471;line-height:1.65;max-width:650px;margin:0}
+    .talk-link{background:#1c6454;color:#fff;flex-shrink:0;border-radius:50px;padding:15px 21px;font-size:13px;font-weight:750;white-space:nowrap}
+    .talk-link:hover{background:#174c40}
+    @media(max-width:650px){.talk-banner{padding:23px;display:block}.talk-link{display:inline-block;margin-top:20px}}
   </style>
 </head>
 <body>
@@ -90,7 +98,7 @@
     <header class="topbar">
       <a class="brand" href="./index.html" aria-label="Marketing Analytics home"><span class="brand-mark">M<span style="color:#99dcb5">.</span></span> Marketing Analytics</a>
       <nav class="topnav" aria-label="Primary navigation">
-        <a href="#work">Work</a>
+        <a href="#work">Work</a><a href="./kmeans_presentation.html">Slides</a>
         <a href="#about">About</a>
         <a class="nav-cta" href="https://github.com/djz1831915699-svg/marketing-analytics" target="_blank" rel="noopener noreferrer">GitHub <span class="tiny-arrow" aria-hidden="true">↗</span></a>
       </nav>
@@ -183,6 +191,14 @@
             <div class="card-bottom"><a href="./dashboard.html" style="color:#28715b;display:inline-flex;align-items:center;gap:8px" aria-label="Explore interactive dashboard">Explore interactive dashboard <span aria-hidden="true">↗</span></a></div>
           </article>
         </div>
+        <article class="talk-banner" aria-label="K-Means interactive slide deck">
+          <div>
+            <span class="talk-eyebrow">NEW · PRESENTATION</span>
+            <h3>K-Means, explained in 12 slides.</h3>
+            <p>A short, classroom-style interactive talk: Euclidean distance, centroids, convergence, cluster profiles and R code.</p>
+          </div>
+          <a class="talk-link" href="./kmeans_presentation.html">Open slide deck <span aria-hidden="true">↗</span></a>
+        </article>
       </section>
       <section id="about" class="about" aria-labelledby="about-heading">
         <div><div class="section-kicker">02 / About this space</div><h2 id="about-heading">Curiosity meets<br><span style="font-family:Georgia,serif;font-weight:400;font-style:italic;color:#357c70">evidence.</span></h2></div>
