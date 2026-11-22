@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0c1717">
+<meta name="description" content="An independent marketing analytics portfolio showcasing reproducible R and Python projects, customer segmentation, regression, lifetime value and interactive web experiments.">
+<title>Marketing Analytics — Beyond the Numbers</title>
+<style>
+:root{--forest:#0c1717;--forest2:#102321;--lime:#c3ee82;--ink:#17211f;--muted:#66716b;--border:#e4e9e1;--paper:#fbfbf8;--cloud:#f2f5ef;--white:#fff;--serif:Georgia,"Times New Roman",serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Arial,sans-serif;-webkit-font-smoothing:antialiased;font-feature-settings:"ss01" on}
+a{text-decoration:none;color:inherit}
+button{font:inherit;cursor:pointer}
+a:focus-visible,button:focus-visible{outline:3px solid #a1ccfa;outline-offset:4px;border-radius:8px}
+::selection{background:#c9f0ae;color:#1c382d}
+.wrap{width:min(1240px,calc(100% - 108px));margin-inline:auto}
+/* Brand and navigation */
+.nav{height:78px;background:var(--forest);border-bottom:1px solid #ffffff15;color:#f3f8ee;position:relative;z-index:10}
+.nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand-logo{width:39px;height:39px;display:grid;place-items:center;background:#d2f7a0;color:#10211b;border-radius:12px;font-size:17px;font-weight:830;letter-spacing:-.08em}
+.brand-text{font-weight:710;font-size:14px;line-height:1.18;letter-spacing:-.035em}.brand-text small{display:block;font-weight:490;color:#98aca4;font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin-top:3px}
+.nav-links{display:flex;align-items:center;gap:33px;font-size:13px;color:#b4c9bf;font-weight:620}
+.nav-links a:hover{color:var(--lime)}
+.nav-links a:last-child{display:inline-flex;align-items:center;gap:12px;background:#f1f7eb;color:#0a1b17;padding:12px 17px;border-radius:99px;font-weight:720;transition:transform .18s,background .18s}
+.nav-links a:last-child:hover{background:var(--lime);transform:translateY(-1px)}
+/* Hero */
+.hero-shell{background:var(--forest);color:#fff;position:relative;overflow:hidden;isolation:isolate}
+.hero-shell:before{content:"";position:absolute;width:900px;height:900px;border-radius:50%;left:52%;top:-360px;background:radial-gradient(circle,#2d584b52 0%,#152b2677 36%,transparent 69%);z-index:-1;pointer-events:none}
+.hero-shell:after{content:"";position:absolute;width:780px;height:780px;left:52%;top:-300px;border:1px solid #a3c7a31a;border-radius:50%;box-shadow:0 0 0 140px #add6ad06,0 0 0 280px #add6ad05;z-index:-1;pointer-events:none}
+.hero{padding:100px 0 74px;display:grid;grid-template-columns:1.01fr .99fr;align-items:center;gap:54px;min-height:660px}
+.overline{font-size:11px;color:#aec7b9;font-weight:730;text-transform:uppercase;letter-spacing:.21em;display:inline-flex;align-items:center;gap:12px}
+.overline:before{content:"";width:22px;height:1px;background:var(--lime)}
+.hero h1{font-size:clamp(75px,8.5vw,128px);line-height:.99;letter-spacing:-.091em;font-weight:690;margin:31px 0 28px;max-width:675px}
+.hero h1 .serif{font-family:var(--serif);font-weight:400;font-style:italic;letter-spacing:-.075em;color:var(--lime)}
+.hero-lede{color:#b3c8bf;font-size:17px;line-height:1.77;max-width:465px;margin:0}
+.hero-actions{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:53px;gap:21px;border-radius:100px;padding:15px 23px;font-size:13px;font-weight:750;transition:transform .2s,background .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}.btn-main{background:var(--lime);color:#13251b}.btn-main:hover{background:#defeab;box-shadow:0 9px 25px #d6fd8b22}.btn-ghost{border:1px solid #51645b;color:#e1ede5}.btn-ghost:hover{background:#ffffff0d}
+.chart-float{width:100%;max-width:565px;margin-left:auto;border:1px solid #33554b;border-radius:25px;background:linear-gradient(153deg,#152c2b,#101f20);padding:24px 25px 14px;box-shadow:0 42px 100px #00000045,0 6px 16px #00000019;transform:rotate(1.3deg);transition:transform .35s}
+.chart-float:hover{transform:rotate(0deg) translateY(-2px)}
+.chart-window{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:9px}
+.window-left{display:flex;align-items:center;gap:10px;color:#b5cfc4;font-size:11px;font-weight:650;letter-spacing:.015em}
+.window-icon{height:29px;width:29px;border-radius:9px;display:grid;place-items:center;background:#28443b;color:var(--lime);font-size:14px}
+.window-live{font-size:10px;color:#a5cdb4;display:inline-flex;gap:7px;align-items:center}.window-live:before{content:"";width:6px;height:6px;background:#b2e87a;border-radius:50%}
+.chart-heading{margin:23px 0 0;font-weight:730;font-size:23px;letter-spacing:-.05em}.chart-subtitle{font-size:11px;color:#88a99c;margin:6px 0 0}
+.hero-chart{width:100%;display:block;height:auto;margin-top:2px}
+.dot{stroke:#102521;stroke-width:2.4;transition:opacity .25s,filter .2s,r .2s;cursor:crosshair}.dot:hover,.dot:focus{filter:drop-shadow(0 0 8px #ffffff88);stroke:#ffffff;stroke-width:2.6}
+.center-mark{pointer-events:none;transition:opacity .25s}.dot.muted,.center-mark.muted{opacity:.12}
+.chart-foot{border-top:1px solid #37564d;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 0 3px;flex-wrap:wrap}
+.chart-foot .legend{display:flex;align-items:center;gap:11px;font-size:10px;color:#b0c7b9}
+.legend .legend-dot{width:8px;height:8px;border-radius:100%;background:var(--lime);display:inline-block}.legend .legend-dot.agents{background:#9db1ff}.legend .legend-dot.balanced{background:#ffbb91}
+.segment-controls{display:flex;gap:4px;background:#0e1e1e;border:1px solid #36574b;border-radius:50px;padding:3px}
+.segment-controls button{border:0;background:transparent;color:#9bb6a8;font-size:10px;font-weight:750;border-radius:40px;padding:7px 10px}
+.segment-controls button[aria-pressed="true"]{color:#162a22;background:#c3ee82}
+.hero-bottom{border-top:1px solid #ffffff1c;padding:23px 0 25px;display:flex;justify-content:space-between;gap:24px;align-items:center;font-size:11px;color:#9eafa5}
+.hero-bottom .metadata{display:flex;gap:24px;align-items:center;flex-wrap:wrap}.hero-bottom b{color:#f4f8ee;font-size:12px;margin-right:7px;font-weight:740}
+/* Shared sections */
+.section{padding:112px 0 30px;scroll-margin-top:30px}
+.section-kicker{font-size:11px;letter-spacing:.2em;font-weight:760;color:#668071;text-transform:uppercase;margin-bottom:17px}
+.section-intro{display:flex;align-items:end;justify-content:space-between;gap:35px;margin-bottom:37px}
+h2{font-size:clamp(41px,5.2vw,71px);letter-spacing:-.077em;line-height:1.04;font-weight:680;margin:0}
+.section-intro p{max-width:345px;font-size:14px;color:#768079;line-height:1.8;margin:0 0 6px}
+/* Featured case */
+.case-feature{border:1px solid #e0e5dd;border-radius:26px;overflow:hidden;display:grid;grid-template-columns:1.03fr .97fr;background:#f2f5ee;min-height:420px}
+.feature-visual{padding:34px;position:relative;overflow:hidden;display:grid;place-items:center;background:radial-gradient(circle at 42% 60%,#d9e8d8 0%,#edf2e9 59%,#eef1ea 100%)}
+.visual-caption{position:absolute;top:26px;left:29px;color:#537062;font-size:10px;text-transform:uppercase;letter-spacing:.15em;font-weight:760}
+.data-map{max-width:560px;width:100%;height:auto;filter:drop-shadow(0 17px 26px #43665012)}
+.feature-details{padding:55px 51px 48px;display:flex;flex-direction:column;align-items:start}
+.number{font-size:11px;letter-spacing:.17em;color:#6d877b;font-weight:760;text-transform:uppercase}
+.feature-details h3{margin:27px 0 18px;font-size:clamp(37px,4vw,55px);font-weight:690;line-height:1.1;letter-spacing:-.071em}
+.feature-details p{color:#65766c;font-size:15px;line-height:1.76;margin:0;max-width:388px}
+.tags{margin:25px 0;display:flex;gap:8px;flex-wrap:wrap}.tags span{border:1px solid #d0dacf;padding:8px 12px;border-radius:50px;font-size:10px;font-weight:740;color:#536859}
+.underlink{font-size:13px;font-weight:780;color:#1a4e3d;display:inline-flex;align-items:center;gap:12px;margin-top:auto;border-bottom:1px solid #8daf9a;padding-bottom:6px}.underlink:hover{color:#32745a}
+/* Supporting work */
+.work-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:18px}
+.work-card{background:#fff;border:1px solid var(--border);border-radius:23px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.work-card:hover{transform:translateY(-4px);box-shadow:0 20px 50px #28352a12}
+.work-card a{display:flex;flex-direction:column;padding:25px 27px 26px;min-height:385px;height:100%}
+.card-top{display:flex;justify-content:space-between;align-items:center;color:#869089;font-size:10px;font-weight:760;letter-spacing:.11em;text-transform:uppercase}.card-top .small-arrow{font-size:16px;color:#536f61}
+.card-art{height:175px;display:grid;place-items:center;margin:16px -3px 17px;border-radius:14px;overflow:hidden}
+.card-art svg{display:block;width:100%;height:auto;max-height:168px}
+.regression-art{background:#eef5f5}.clv-art{background:#f7f3ed}.dashboard-art{background:#f0f1f7}
+.work-card h3{font-size:27px;letter-spacing:-.056em;line-height:1.1;margin:0 0 9px;font-weight:730}
+.work-card p{font-size:13px;color:#778179;line-height:1.7;margin:0}.work-card .card-link{font-size:12px;color:#2f6c51;font-weight:760;margin-top:auto;padding-top:22px}
+/* Playground */
+.playground{padding-top:125px}
+.playground-inner{background:#111e1c;color:#f9faf5;border-radius:29px;overflow:hidden;position:relative;isolation:isolate;padding:47px}
+.playground-inner:before{position:absolute;content:"";inset:0;background:radial-gradient(circle at 95% 17%,#50765a49,transparent 35%);z-index:-1}
+.playground .section-kicker{color:#b8d6ba}.playground-inner h2{max-width:800px;color:#fff}
+.playground-desc{margin:17px 0 36px;max-width:570px;color:#a8bdb0;line-height:1.75;font-size:15px}
+.play-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+.arcade-spotlight{display:flex;min-height:375px;flex-direction:column;align-items:start;padding:30px;border:1px solid #ffffff24;border-radius:22px;background:linear-gradient(133deg,#253d35,#193229);position:relative;overflow:hidden;transition:transform .24s,border-color .24s}
+.arcade-spotlight:hover{transform:translateY(-3px);border-color:#a2c7a46a}
+.spotlight-label{color:#c4e5c9;text-transform:uppercase;font-size:10px;letter-spacing:.15em;font-weight:770}
+.arcade-spotlight h3{font-size:40px;letter-spacing:-.072em;line-height:1.07;margin:14px 0 9px}
+.arcade-spotlight p{font-size:13px;line-height:1.65;color:#c4d5cb;max-width:310px;margin:0}
+.play-visual{display:flex;gap:13px;margin:26px 0 24px;align-items:center;position:relative;isolation:isolate}
+.play-square{height:61px;width:61px;display:grid;place-items:center;border-radius:14px;background:#ffffff15;border:1px solid #ffffff26;color:#e5facd;box-shadow:0 12px 25px #05150e20;font-size:30px;font-weight:800}
+.play-square:nth-child(2){background:#c3ee82;color:#182c1c;transform:rotate(-9deg)}.play-square:nth-child(3){font-size:26px;color:#c3bafc}.play-square:nth-child(4){font-size:28px;color:#fac49f}
+.spotlight-cta{margin-top:auto;font-size:13px;color:#d6ffc2;font-weight:750}
+.playlist{display:grid;grid-template-rows:repeat(3,minmax(0,1fr));gap:14px}
+.playlist a{display:flex;align-items:center;gap:18px;padding:22px 24px;background:#ffffff0b;border:1px solid #ffffff1c;border-radius:19px;transition:background .2s,transform .2s}
+.playlist a:hover{background:#ffffff16;transform:translateX(3px)}
+.play-symbol{height:46px;width:46px;flex:0 0 46px;border-radius:12px;display:grid;place-items:center;background:#ffffff10;color:#c6e9b4;font-size:23px;font-weight:650}
+.play-detail{min-width:0;flex:1}.play-detail b{display:block;font-size:15px;font-weight:750;letter-spacing:-.03em}.play-detail small{display:block;font-size:11px;color:#9caf9f;margin-top:6px;line-height:1.4}.playlist-arrow{font-size:18px;color:#abc4b7;flex:0 0 auto}
+/* About and footer */
+.about{display:grid;grid-template-columns:.9fr 1.1fr;gap:95px;padding:123px 0 128px;align-items:start;scroll-margin-top:35px}.about .section-kicker{margin-bottom:19px}.about h2{font-size:clamp(41px,4.5vw,60px)}
+.about-copy{font-size:17px;line-height:1.87;color:#68786d;margin:10px 0 0;max-width:585px}.values{display:flex;flex-wrap:wrap;gap:8px;margin-top:25px}.values span{font-size:11px;font-weight:700;border:1px solid #dfe7db;color:#627568;border-radius:50px;padding:10px 14px}
+.footer{border-top:1px solid var(--border);background:#f2f4ee}.footer-inner{min-height:116px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.footer-name{font-size:15px;font-weight:750;letter-spacing:-.04em}.footer-name small{font-weight:460;letter-spacing:0;display:block;margin-top:7px;font-size:11px;color:#8b968c}.footer-links{display:flex;flex-wrap:wrap;align-items:center;gap:25px;color:#6b7a6c;font-size:12px;font-weight:710}.footer-links a:hover{color:#1d5d42}
+/* Polished responsive behavior */
+@media(max-width:1150px){.wrap{width:calc(100% - 72px)}.hero{gap:22px}.hero h1{font-size:clamp(70px,8vw,110px)}.chart-float{padding:19px 18px 11px}.feature-details{padding:46px 36px}.work-card a{padding:23px}}
+@media(max-width:900px){.hero{grid-template-columns:1fr;gap:50px;padding:85px 0 65px}.hero h1{max-width:none}.chart-float{max-width:720px;margin:0 auto;transform:none}.chart-float:hover{transform:translateY(-2px)}.hero-bottom{flex-direction:column;align-items:start}.section{padding-top:95px}.case-feature{grid-template-columns:1fr}.feature-visual{min-height:370px}.feature-details{min-height:325px}.work-grid{grid-template-columns:1fr 1fr}.work-card:last-child{grid-column:span 2}.play-grid{grid-template-columns:1fr}.arcade-spotlight{min-height:345px}.playlist{grid-template-columns:repeat(3,1fr);grid-template-rows:none}.playlist a{padding:17px;gap:10px;flex-direction:column;align-items:start}.play-detail small{line-height:1.5}.playlist-arrow{display:none}.about{gap:55px}}
+@media(max-width:640px){.wrap{width:calc(100% - 36px)}.nav{height:68px}.brand-logo{height:34px;width:34px;font-size:15px}.brand-text{font-size:12px}.brand-text small{font-size:8px}.nav-links{gap:15px;font-size:11px}.nav-links a[href="#about"],.nav-links a:last-child{display:none}.hero{padding:72px 0 55px;gap:44px;min-height:0}.hero h1{font-size:clamp(66px,13vw,89px);margin:26px 0 22px}.hero-lede{font-size:15px}.hero-actions{gap:10px;margin-top:25px}.btn{font-size:12px;padding:14px 18px;min-height:48px;gap:11px}.chart-float{border-radius:19px;padding:17px 12px 11px}.chart-window{padding:0 4px}.chart-heading{font-size:19px;margin-left:5px}.chart-subtitle{margin-left:5px}.hero-chart{margin-top:8px}.chart-foot{padding:11px 3px 0}.chart-foot .legend{gap:7px;font-size:9px}.segment-controls button{font-size:9px;padding:6px 8px}.hero-bottom{padding:22px 0;font-size:10px}.hero-bottom .metadata{gap:10px 18px}.section{padding:74px 0 0}.section-intro{display:block;margin-bottom:25px}.section-intro p{margin-top:17px;font-size:13px}.section-kicker{font-size:10px}h2{font-size:clamp(42px,9.3vw,57px)}.feature-visual{min-height:250px;padding:20px}.visual-caption{top:18px;left:19px}.feature-details{min-height:350px;padding:29px 26px 32px}.feature-details h3{font-size:41px}.feature-details p{font-size:13px}.work-grid{grid-template-columns:1fr;gap:12px;margin-top:12px}.work-card:last-child{grid-column:auto}.work-card a{min-height:335px;padding:24px}.card-art{height:155px}.work-card h3{font-size:25px}.playground{padding-top:86px}.playground-inner{padding:28px 19px;border-radius:24px}.playground-desc{font-size:13px}.arcade-spotlight{padding:24px;min-height:345px}.arcade-spotlight h3{font-size:34px}.play-square{height:52px;width:52px;font-size:25px}.play-visual{gap:8px}.playlist{grid-template-columns:1fr;gap:10px}.playlist a{flex-direction:row;align-items:center;min-height:86px;padding:15px}.playlist-arrow{display:block}.about{padding:90px 0 93px;grid-template-columns:1fr;gap:26px}.about h2{font-size:42px}.about-copy{font-size:15px;margin-top:0}.footer-inner{min-height:139px;align-items:start;justify-content:center;flex-direction:column;gap:18px}.footer-links{gap:17px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap nav-inner">
+<a class="brand" href="./index.html" aria-label="Marketing Analytics home"><span class="brand-logo">M.</span><span class="brand-text">Marketing Analytics<small>Independent portfolio</small></span></a>
+<nav class="nav-links" aria-label="Site navigation"><a href="#work">Work</a><a href="#playground">Playground</a><a href="#about">About</a><a href="https://github.com/djz1831915699-svg/marketing-analytics" target="_blank" rel="noopener noreferrer">View GitHub ↗</a></nav>
+</div></header>
+<div class="hero-shell">
+<section class="wrap hero" aria-labelledby="main-title">
+<div class="hero-content"><div class="overline">R &amp; Python / Marketing Analytics / 2026</div>
+<h1 id="main-title">Beyond the<br><span class="serif">numbers.</span></h1>
+<p class="hero-lede">Behind every data point is a decision, a preference, a person. I explore how thoughtful analysis turns marketing questions into clearer stories.</p>
+<div class="hero-actions"><a class="btn btn-main" href="#work">Explore my work <span aria-hidden="true">↗</span></a><a class="btn btn-ghost" href="#playground">Visit the playground <span aria-hidden="true">→</span></a></div></div>
+<div class="chart-float" aria-label="Interactive simulated customer cluster visualization">
+<div class="chart-window"><div class="window-left"><span class="window-icon">◈</span> CUSTOMER INTELLIGENCE / 01</div><span class="window-live">SIMULATED DATA</span></div>
+<h2 class="chart-heading">Finding distinct preferences.</h2><p class="chart-subtitle">Twelve practice customers · Three behavioral groups</p>
+<svg class="hero-chart" viewBox="0 0 515 384" role="img" aria-label="A simulated customer segmentation plot, with premium savings preference on the horizontal axis and neighborhood-agent preference on the vertical axis. Three groups of four customers.">
+  <g stroke="#35504e" stroke-opacity=".62" stroke-width="1"><path d="M68 68H468M68 115H468M68 162H468M68 209H468M68 256H468M68 304H468"/><path d="M68 68V304M148 68V304M228 68V304M308 68V304M388 68V304M468 68V304"/></g>
+  <g fill="#809994" font-size="12" font-family="-apple-system,BlinkMacSystemFont,Arial,sans-serif"><text x="68" y="338" text-anchor="middle">0</text><text x="148" y="338" text-anchor="middle">2</text><text x="228" y="338" text-anchor="middle">4</text><text x="308" y="338" text-anchor="middle">6</text><text x="388" y="338" text-anchor="middle">8</text><text x="468" y="338" text-anchor="middle">10</text><text x="49" y="308.0" text-anchor="end">0</text><text x="49" y="190.0" text-anchor="end">5</text><text x="49" y="72.0" text-anchor="end">10</text>
+    <text x="268" y="371" text-anchor="middle">Premium savings preference →</text>
+    <text x="16" y="189" text-anchor="middle" transform="rotate(-90 16 189)">Neighborhood agent preference →</text>
+  </g>
+  <g><circle class="dot dot-savings" data-segment="savings" cx="428.0" cy="256.8" r="8.3" fill="#C3EE82" tabindex="0" aria-label="Savings customer: savings 9, agent 2"><title>Premium savings 9 / Neighborhood agents 2</title></circle>
+<circle class="dot dot-savings" data-segment="savings" cx="388.0" cy="233.2" r="8.3" fill="#C3EE82" tabindex="0" aria-label="Savings customer: savings 8, agent 3"><title>Premium savings 8 / Neighborhood agents 3</title></circle>
+<circle class="dot dot-savings" data-segment="savings" cx="428.0" cy="233.2" r="8.3" fill="#C3EE82" tabindex="0" aria-label="Savings customer: savings 9, agent 3"><title>Premium savings 9 / Neighborhood agents 3</title></circle>
+<circle class="dot dot-savings" data-segment="savings" cx="388.0" cy="280.4" r="8.3" fill="#C3EE82" tabindex="0" aria-label="Savings customer: savings 8, agent 1"><title>Premium savings 8 / Neighborhood agents 1</title></circle>
+<circle class="dot dot-agents" data-segment="agents" cx="148.0" cy="91.6" r="8.3" fill="#9DB1FF" tabindex="0" aria-label="Agents customer: savings 2, agent 9"><title>Premium savings 2 / Neighborhood agents 9</title></circle>
+<circle class="dot dot-agents" data-segment="agents" cx="188.0" cy="115.2" r="8.3" fill="#9DB1FF" tabindex="0" aria-label="Agents customer: savings 3, agent 8"><title>Premium savings 3 / Neighborhood agents 8</title></circle>
+<circle class="dot dot-agents" data-segment="agents" cx="108.0" cy="91.6" r="8.3" fill="#9DB1FF" tabindex="0" aria-label="Agents customer: savings 1, agent 9"><title>Premium savings 1 / Neighborhood agents 9</title></circle>
+<circle class="dot dot-agents" data-segment="agents" cx="148.0" cy="138.8" r="8.3" fill="#9DB1FF" tabindex="0" aria-label="Agents customer: savings 2, agent 7"><title>Premium savings 2 / Neighborhood agents 7</title></circle>
+<circle class="dot dot-balanced" data-segment="balanced" cx="348.0" cy="115.2" r="8.3" fill="#FFBB91" tabindex="0" aria-label="Balanced customer: savings 7, agent 8"><title>Premium savings 7 / Neighborhood agents 8</title></circle>
+<circle class="dot dot-balanced" data-segment="balanced" cx="388.0" cy="91.6" r="8.3" fill="#FFBB91" tabindex="0" aria-label="Balanced customer: savings 8, agent 9"><title>Premium savings 8 / Neighborhood agents 9</title></circle>
+<circle class="dot dot-balanced" data-segment="balanced" cx="308.0" cy="115.2" r="8.3" fill="#FFBB91" tabindex="0" aria-label="Balanced customer: savings 6, agent 8"><title>Premium savings 6 / Neighborhood agents 8</title></circle>
+<circle class="dot dot-balanced" data-segment="balanced" cx="348.0" cy="91.6" r="8.3" fill="#FFBB91" tabindex="0" aria-label="Balanced customer: savings 7, agent 9"><title>Premium savings 7 / Neighborhood agents 9</title></circle>
+<g class="center-mark" data-segment="savings" transform="translate(408.0 250.9)"><path d="M -9 -9 L 9 9 M -9 9 L 9 -9" stroke="#f8fafa" stroke-width="2.5" stroke-linecap="round"/><circle cx="0" cy="0" r="13" fill="none" stroke="#ffffff77" stroke-width="1.1"/></g>
+<g class="center-mark" data-segment="agents" transform="translate(148.0 109.3)"><path d="M -9 -9 L 9 9 M -9 9 L 9 -9" stroke="#f8fafa" stroke-width="2.5" stroke-linecap="round"/><circle cx="0" cy="0" r="13" fill="none" stroke="#ffffff77" stroke-width="1.1"/></g>
+<g class="center-mark" data-segment="balanced" transform="translate(348.0 103.4)"><path d="M -9 -9 L 9 9 M -9 9 L 9 -9" stroke="#f8fafa" stroke-width="2.5" stroke-linecap="round"/><circle cx="0" cy="0" r="13" fill="none" stroke="#ffffff77" stroke-width="1.1"/></g></g>
+</svg>
+<div class="chart-foot"><div class="legend"><span><i class="legend-dot"></i> Savings</span><span><i class="legend-dot agents"></i> Agent-led</span><span><i class="legend-dot balanced"></i> Both</span></div>
+<div class="segment-controls" role="group" aria-label="Filter plotted customer segments"><button type="button" data-filter="all" aria-pressed="true">All</button><button type="button" data-filter="savings" aria-pressed="false">A</button><button type="button" data-filter="agents" aria-pressed="false">B</button><button type="button" data-filter="balanced" aria-pressed="false">C</button></div></div>
+</div>
+</section>
+<div class="wrap hero-bottom"><div class="metadata"><span><b>04</b> Analytics projects</span><span><b>R / Python</b> Reproducible work</span><span><b>01</b> Creative playground</span></div><span>Scroll to explore ↓</span></div>
+</div>
+<main>
+<section class="section wrap" id="work" aria-labelledby="work-title">
+<div class="section-intro"><div><div class="section-kicker">01 / Selected work</div><h2 id="work-title">Interesting questions.<br>Clearer answers.</h2></div><p>Four hands-on projects at the intersection of customer behavior, analytics, and communication. All examples use simulated practice data.</p></div>
+<article class="case-feature"><div class="feature-visual"><span class="visual-caption">CLUSTER INTELLIGENCE / A VISUAL STUDY</span><svg class="data-map" viewBox="0 0 565 340" role="img" aria-label="Illustrative scatterplot of three customer segments with three highlighted group centers">
+<rect x="18" y="15" width="529" height="310" rx="19" fill="#ffffff" opacity=".83"/>
+<g stroke="#e2ece1" stroke-width="1"><path d="M70 50V286H510" fill="none"/><path d="M70 94H510M70 139H510M70 185H510M70 231H510M155 50V286M243 50V286M330 50V286M418 50V286M510 50V286"/></g>
+<g fill="#9cab9f" font-size="12" font-family="Arial, sans-serif"><text x="75" y="306">0</text><text x="500" y="306">10</text><text x="42" y="59">10</text><text x="48" y="290">0</text><text x="286" y="319" text-anchor="middle">Savings preference →</text></g>
+<g fill="#94be6a"><circle cx="465" cy="236" r="9"/><circle cx="428" cy="211" r="9"/><circle cx="465" cy="211" r="9"/><circle cx="428" cy="261" r="9"/></g>
+<g fill="#aab3db"><circle cx="162" cy="73" r="9"/><circle cx="198" cy="100" r="9"/><circle cx="125" cy="73" r="9"/><circle cx="162" cy="124" r="9"/></g>
+<g fill="#efb494"><circle cx="377" cy="97" r="9"/><circle cx="420" cy="72" r="9"/><circle cx="336" cy="97" r="9"/><circle cx="377" cy="72" r="9"/></g>
+<g stroke="#365447" stroke-width="2.2" stroke-linecap="round"><path d="M439 224l14 14m0-14l-14 14"/><path d="M158 86l14 14m0-14l-14 14"/><path d="M372 70l14 14m0-14l-14 14"/></g>
+<rect x="319" y="268" width="182" height="31" rx="15.5" fill="#eaf0e5"/><text x="410" y="289" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#54745d" text-anchor="middle">3 clusters · 12 customers</text>
+</svg></div>
+<div class="feature-details"><span class="number">Featured / Project 01</span><h3>Customer<br>Segmentation.</h3><p>How can we identify different customer needs? A K-Means practice study of insurance customers using premium savings and neighborhood-agent preferences.</p><div class="tags"><span>R</span><span>K-Means</span><span>Quarto</span></div><a class="underlink" href="./kmeans_customer_segmentation.html">Read the case study <span aria-hidden="true">↗</span></a></div></article>
+<div class="work-grid">
+<article class="work-card"><a href="./regression.html"><div class="card-top"><span>02 / Modeling</span><span class="small-arrow" aria-hidden="true">↗</span></div><div class="card-art regression-art"><svg viewBox="0 0 320 160" role="img" aria-label="Illustrative regression scatter chart with fitted line"><g stroke="#d5e3df" stroke-width="1"><path d="M25 15V141H300" fill="none"/><path d="M25 43H300M25 73H300M25 103H300"/></g><path d="M38 125Q159 87 289 27" fill="none" stroke="#2c8064" stroke-width="3.5" stroke-linecap="round"/><g fill="#7ca99b"><circle cx="52" cy="130" r="5.7"/><circle cx="78" cy="99" r="5.7"/><circle cx="115" cy="109" r="5.7"/><circle cx="138" cy="69" r="5.7"/><circle cx="166" cy="89" r="5.7"/><circle cx="204" cy="50" r="5.7"/><circle cx="226" cy="66" r="5.7"/><circle cx="261" cy="28" r="5.7"/></g></svg></div><h3>Regression.</h3><p>Understand relationships between marketing activities and business outcomes.</p><span class="card-link">Explore project ↗</span></a></article>
+<article class="work-card"><a href="./customer_clv.html"><div class="card-top"><span>03 / Customer value</span><span class="small-arrow" aria-hidden="true">↗</span></div><div class="card-art clv-art"><svg viewBox="0 0 320 160" role="img" aria-label="Illustrative CLV bar chart"><path d="M35 139H298" stroke="#e9ded3" stroke-width="1.5"/><g fill="#eadfce"><rect x="47" y="93" width="42" height="46" rx="7"/><rect x="107" y="70" width="42" height="69" rx="7"/><rect x="167" y="48" width="42" height="91" rx="7"/></g><rect x="227" y="25" width="42" height="114" rx="7" fill="#bd8c67"/><path d="M68 87L128 65L188 43L248 16" fill="none" stroke="#658372" stroke-width="3" stroke-linecap="round"/><g fill="#658372"><circle cx="68" cy="87" r="4"/><circle cx="128" cy="65" r="4"/><circle cx="188" cy="43" r="4"/><circle cx="248" cy="16" r="4"/></g></svg></div><h3>Customer CLV.</h3><p>Explore acquisition, retention, and the economics of long-term relationships.</p><span class="card-link">Explore project ↗</span></a></article>
+<article class="work-card"><a href="./dashboard.html"><div class="card-top"><span>04 / Visualization</span><span class="small-arrow" aria-hidden="true">↗</span></div><div class="card-art dashboard-art"><svg viewBox="0 0 320 160" role="img" aria-label="Illustrative analytics dashboard with metrics and a trend chart"><rect x="24" y="14" width="272" height="133" rx="12" fill="#fff" stroke="#e2e5ee"/><g fill="#f2f3f7"><rect x="37" y="28" width="74" height="38" rx="6"/><rect x="124" y="28" width="74" height="38" rx="6"/><rect x="211" y="28" width="72" height="38" rx="6"/></g><g fill="#b2bad1"><rect x="48" y="38" width="35" height="5" rx="2.5"/><rect x="136" y="38" width="35" height="5" rx="2.5"/><rect x="221" y="38" width="35" height="5" rx="2.5"/></g><g fill="#657da8"><rect x="48" y="50" width="46" height="7" rx="3.5"/><rect x="136" y="50" width="46" height="7" rx="3.5"/><rect x="221" y="50" width="40" height="7" rx="3.5"/></g><path d="M40 130H281" stroke="#e6eaf2"/><path d="M43 121L85 104L115 109L152 84L181 99L215 81L245 90L275 74" fill="none" stroke="#8298d3" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg></div><h3>Dashboard.</h3><p>Interactive reporting that makes complex information easier to navigate.</p><span class="card-link">Explore project ↗</span></a></article>
+</div>
+</section>
+<section class="section playground wrap" id="playground" aria-labelledby="play-title"><div class="playground-inner">
+<div class="section-kicker">02 / A creative playground</div><h2 id="play-title">Serious about insights.<br>Curious about everything.</h2><p class="playground-desc">A small collection of side projects, experiments and things made just for the joy of learning how the web works.</p>
+<div class="play-grid"><a class="arcade-spotlight" href="./arcade.html"><span class="spotlight-label">Featured experiment / Four playable games</span><h3>The Game Arcade.</h3><p>Snake, 2048, Block Drop and Neon Racer, all playable in your browser.</p><div class="play-visual" aria-hidden="true"><span class="play-square">⌁</span><span class="play-square">8</span><span class="play-square">▦</span><span class="play-square">◈</span></div><span class="spotlight-cta">Enter the Arcade ↗</span></a>
+<div class="playlist">
+<a href="./kmeans_presentation.html"><span class="play-symbol" aria-hidden="true">▤</span><span class="play-detail"><b>K-Means slides</b><small>12-slide interactive explainer</small></span><span class="playlist-arrow" aria-hidden="true">↗</span></a>
+<a href="./pelican_test.html"><span class="play-symbol" aria-hidden="true">✳</span><span class="play-detail"><b>Pelican bicycle test</b><small>An SVG animation experiment</small></span><span class="playlist-arrow" aria-hidden="true">↗</span></a>
+<a href="https://threejs.org/examples/" target="_blank" rel="noopener noreferrer"><span class="play-symbol" aria-hidden="true">◎</span><span class="play-detail"><b>Three.js gallery</b><small>External 3D web inspiration</small></span><span class="playlist-arrow" aria-hidden="true">↗</span></a>
+</div></div></div></section>
+<section class="about wrap" id="about" aria-labelledby="about-title"><div><div class="section-kicker">03 / About</div><h2 id="about-title">Built to learn.<br>Designed to explain.</h2></div><div><p class="about-copy">This portfolio is a place to explore marketing analytics through reproducible code and intuitive visuals. Each project starts with a question, tests an idea, and tries to make the answer useful. The datasets shown here are simulated learning examples, not empirical findings.</p><div class="values"><span>Customer insights</span><span>R / Python</span><span>Data storytelling</span><span>Interactive experiments</span></div></div></section>
+</main>
+<footer class="footer"><div class="wrap footer-inner"><div class="footer-name">Marketing Analytics <small>Independent projects · Practice data</small></div><div class="footer-links"><a href="#work">Projects</a><a href="#playground">Playground</a><a href="https://github.com/djz1831915699-svg/marketing-analytics" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div></footer>
+<script>
+(function(){
+  const buttons=[...document.querySelectorAll('.segment-controls button')];
+  const dots=[...document.querySelectorAll('.dot,.center-mark')];
+  buttons.forEach(button=>button.addEventListener('click',()=>{
+    const filter=button.dataset.filter;
+    buttons.forEach(x=>x.setAttribute('aria-pressed',String(x===button)));
+    dots.forEach(dot=>dot.classList.toggle('muted',filter!=='all'&&dot.dataset.segment!==filter));
+  }));
+})();
+</script>
+</body>
+</html>
