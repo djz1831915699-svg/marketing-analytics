@@ -120,6 +120,15 @@
     .threejs-link{display:inline-flex;align-items:center;gap:10px;flex-shrink:0;padding:15px 21px;border-radius:99px;background:#193b4d;color:#fff;font-size:13px;font-weight:750;white-space:nowrap;transition:background .18s,transform .18s}
     .threejs-link:hover{background:#315d77;transform:translateY(-2px)}
     @media(max-width:650px){.threejs-banner{display:block;padding:23px}.threejs-link{margin-top:19px}}
+  
+    /* Game Arcade entry — added without replacing the existing portfolio */
+    .arcade-feature{margin-top:22px;padding:31px 35px;display:flex;justify-content:space-between;align-items:center;gap:24px;border-radius:22px;background:linear-gradient(115deg,#133137,#1d4c46);color:#f3fff6;box-shadow:0 16px 42px #12332d20}
+    .arcade-feature .kicker{font-size:10px;font-weight:800;letter-spacing:.14em;color:#b8edb3;text-transform:uppercase}
+    .arcade-feature h3{font-size:29px;letter-spacing:-.055em;margin:9px 0 9px}
+    .arcade-feature p{font-size:13px;color:#c0d8d2;line-height:1.7;max-width:650px;margin:0}
+    .arcade-feature a{display:inline-flex;flex-shrink:0;align-items:center;padding:15px 21px;border-radius:999px;background:#d4f3aa;color:#17332d;font-size:13px;font-weight:800}
+    .arcade-feature a:hover{background:#f0ffcd}
+    @media(max-width:650px){.arcade-feature{display:block;padding:24px}.arcade-feature a{margin-top:20px}}
   </style>
 </head>
 <body>
@@ -250,6 +259,14 @@
             <p>Play with interactive planets, animated particles, and browser-based 3D experiments in the official Three.js examples gallery. External inspiration, not a project hosted here.</p>
           </div>
           <a class="threejs-link" href="https://threejs.org/examples/" target="_blank" rel="noopener noreferrer" aria-label="Explore official Three.js 3D examples in a new tab">Explore Three.js demos <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="arcade-feature" aria-label="Game Arcade: four browser games">
+          <div>
+            <span class="kicker">NEW · INTERACTIVE PLAYGROUND</span>
+            <h3>Game Arcade. <span aria-hidden="true">🎮</span></h3>
+            <p>Take a break and play four original browser games: Snake, 2048, Block Drop and Neon Racer. No install required.</p>
+          </div>
+          <a href="./arcade.html">Enter Game Arcade <span aria-hidden="true">↗</span></a>
         </article>
       </section>
       <section id="about" class="about" aria-labelledby="about-heading">
